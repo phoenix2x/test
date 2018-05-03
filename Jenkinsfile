@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker 'node:9.11.1'
+        docker 'node:10'
     }
 
     stages {
