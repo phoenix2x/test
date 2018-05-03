@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        dockerfile true
+        docker 'node:9.11.1'
     }
 
     stages {
