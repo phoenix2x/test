@@ -9,11 +9,6 @@ pipeline {
                 sh 'npm i'
             }
         }
-        stage('Install2') {
-            steps {
-                sh 'asdf'
-            }
-        }
         stage('Build') {
             steps {
                 sh 'npm run build'
