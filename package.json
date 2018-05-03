@@ -1,7 +1,10 @@
 {
   "name": "test",
   "version": "0.0.1",
+  "scripts": {
+    "build": "node ./src/index.js"
+  },
   "dependencies": {
-    
+    "lodash": "^4.17.10"
   }
 }
