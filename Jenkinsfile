@@ -15,6 +15,9 @@ pipeline {
             }
         }
         stage('Publish') {
+            environment {
+                NPMRC = credentials('NPMRC')
+            }
             steps {
                 sh 'echo $NPMRC > .npmrc'
                 sh 'npm publish'
