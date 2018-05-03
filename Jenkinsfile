@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh 'npm i'
+                sh 'npm ci'
             }
         }
         stage('Build') {
@@ -16,6 +16,7 @@ pipeline {
         }
         stage('Publish') {
             steps {
+                sh 'echo $NPMRC > .npmrc'
                 sh 'npm publish'
             }
         }
