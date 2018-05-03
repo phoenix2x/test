@@ -1,6 +1,6 @@
 {
-  "name": "test",
-  "version": "0.0.1",
+  "name": "test-publish-11",
+  "version": "0.0.2",
   "scripts": {
     "build": "node ./src/index.js"
   },
