@@ -1,12 +1,12 @@
 pipeline {
     agent {
-        docker 'node:10'
+        docker 'mhart/alpine-node:10'
     }
 
     stages {
         stage('Install') {
             steps {
-                sh 'npm install'
+                sh 'npm ci'
             }
         }
         stage('Build') {
