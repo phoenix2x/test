@@ -1,2 +1,2 @@
 FROM node:10
-RUN npm install npm
+RUN npm install -g npm
