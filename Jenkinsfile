@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker 'mhart/alpine-node:10'
+        dockerfile true
     }
 
     stages {
