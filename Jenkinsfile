@@ -25,7 +25,7 @@ pipeline {
 //                sh 'npm publish'
 //                sh 'git -c "user.name=Jenkins" -c "user.email=Jenkins" commit --no-verify -m "Jenkins version bump" package.json'
 //                sh 'git push https://${BITBUCKET_USR}:${BITBUCKET_PSW}@stash.consumer.org/scm/cro/global-navigation-ui.git HEAD:$BRANCH_NAME'
-                sh '''
+                sh '''#!/bin/bash
                     urlencode() {
                         old_lc_collate=$LC_COLLATE
                         LC_COLLATE=C
@@ -41,8 +41,8 @@ pipeline {
                         
                         LC_COLLATE=$old_lc_collate
                     }
+                    echo $(urlencode "@")
                     '''
-                sh 'echo $(urlencode "@")'
 //                script {
 //                    withCredentials([sshUserPrivateKey(credentialsId: "test_ssh", keyFileVariable: 'SSH_KEY')]) {
 //                        sh 'git -c "user.name=Jenkins" -c "user.email=Jenkins" commit -m "Jenkins version bump" package.json'
