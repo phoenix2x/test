@@ -15,17 +15,31 @@ pipeline {
 //            }
 //        }
         stage('Publish') {
-            input {
-                message "Enter version"
-                ok "Publish"
-                parameters {
-                    string(name: 'VERSION', defaultValue: '', description: 'Version to publish')
-                }
-            }
+//            input {
+//                message "Enter version"
+//                ok "Publish"
+//                parameters {
+//                    string(name: 'VERSION', defaultValue: '', description: 'Version to publish')
+//                }
+//            }
             environment {
                 NPMRC = credentials('NPMRC')
             }
             steps {
+                script {
+                    env.VERSION = input(
+                        message: "Enter version",
+                        ok: "y",
+                        submitter: "admin",
+                        parameters: [
+                            string(name: 'VERSION', defaultValue: '', description: 'Version to publish')
+                        ]
+                    )
+//                    if (VERSION != 'y') {
+//                        currentBuild.result = "ABORTED"
+//                        error "User cancelled"
+//                    }
+                }
                 sh 'echo $VERSION'
 //                sh 'echo $NPMRC > .npmrc'
 //
