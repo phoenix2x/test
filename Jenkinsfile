@@ -3,13 +3,6 @@ pipeline {
         docker 'node:8.11.1'
     }
 
-    parameters {
-        booleanParam (
-            defaultValue: false,
-            description: '',
-            name : 'FORCE_FULL_BUILD')
-    }
-
     stages {
 //        stage('Install') {
 //            steps {
@@ -22,12 +15,19 @@ pipeline {
 //            }
 //        }
         stage('Publish') {
-//            environment {
-//                NPMRC = credentials('NPMRC')
-//            }
+            input {
+                message "Enter version"
+                ok "Publish"
+                parameters {
+                    string(name: 'VERSION', defaultValue: '', description: 'Version to publish')
+                }
+            }
+            environment {
+                NPMRC = credentials('NPMRC')
+            }
             steps {
+                sh 'echo $VERSION'
 //                sh 'echo $NPMRC > .npmrc'
-                sh 'echo ${params.FORCE_FULL_BUILD}'
 //
 //                sh 'npm --no-git-tag-version version prerelease'
 //                sh 'npm publish'
